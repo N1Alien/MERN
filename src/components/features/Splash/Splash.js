@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import styles from './Splash.module.scss';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { useEffect, useState } from "react";
 import { connect } from 'react-redux';
 import { loadCars } from '../../../redux/carRedux';
 
