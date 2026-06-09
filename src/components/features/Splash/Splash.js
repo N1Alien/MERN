@@ -2,22 +2,21 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './Splash.module.scss';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+import 'particles.js';
 import { connect } from 'react-redux';
 import { loadCars } from '../../../redux/carRedux';
 
 const Component = ({ className, getCars }) => {
 // Wewnątrz komponentu:
-const [init, setInit] = useState(false);
 
-useEffect(() => {
-  initParticlesEngine(async (engine) => {
-    await loadSlim(engine);
-  }).then(() => {
-    setInit(true);
-  });
-}, []);
+  useEffect(() => {
+    // Sprawdza czy obiekt particlesJS istnieje globalnie i ładuje konfigurację
+    if (window.particlesJS) {
+      window.particlesJS('particles-js', {
+        /* Tutaj wklej swoje stare parametry animacji cząsteczek */
+      });
+    }
+  }, []);
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
@@ -37,7 +36,7 @@ useEffect(() => {
     <div className={clsx(className, styles.root)} onClick={hideSplash} >
 
       <div className={flag ? styles.hide : styles.show}>
-        {init && (
+        {(
           <>
             <Particles
               canvasClassName={styles.part}
