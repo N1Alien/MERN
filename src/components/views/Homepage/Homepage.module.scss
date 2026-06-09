@@ -1,0 +1,74 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  background-color: $background-color;
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  @mixin car {
+    margin-bottom: 15px;
+    transition: 1s;
+    overflow: hidden;
+    text-align: center;
+
+    &:hover .carImg {
+      transform: scale(1.1);
+    }
+
+    &:hover .btn {
+      color: black;
+      opacity: 1;
+    }
+  }
+
+  .carDesktop {
+    @include car;
+    max-width: 30%;
+    min-width: 30%;
+  }
+
+  .carTablet {
+    @include car;
+    max-width: 45%;
+    min-width: 45%;
+  }
+
+  .carMobile {
+    @include car;
+    max-width: 90%;
+    min-width: 90%;
+  }
+
+  .btn {
+    color: transparent;
+    opacity: 0;
+    width: 100px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    @media (max-width: 400px) {
+      opacity: 1;
+      color: green;
+    }
+  }
+
+  .carImg {
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .carBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  background-color: $background-color;
+  padding-top: 0;
+  margin-bottom: -20px;
+
+  @media (max-width: 400px) {
+    padding-top: 50px;
+  }
+
+  .input {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .enter {
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    right: 25px;
+    bottom: 5px;
+    font-size: 10px;
+    outline-style: none;
+    transition: .3s;
+  }
+}

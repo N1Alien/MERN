@@ -1,0 +1,66 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  width: 60%;
+  min-width: 60%;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding-bottom: 20px;
+  margin-bottom: 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 455px) {
+    width: 95%;
+    min-width: 95%;
+  }
+
+  .single {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    background-color: $background-color;
+
+    a {
+      color: black;
+      margin-right: 0;
+    }
+
+    .text {
+      max-width: 80%;
+      text-align: center;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+  }
+
+  .exit {
+    border: 2px solid transparent;
+    padding: 2px;
+    border-radius: 70%;
+    font-weight: bolder;
+    font-size: 40px;
+    font-weight: bold;
+
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  .empty {
+    width: 500px;
+    height: 100px;
+    text-align: center;
+  }
+}
+
+.link {
+  margin: 40px auto;
+  text-align: center;
+}

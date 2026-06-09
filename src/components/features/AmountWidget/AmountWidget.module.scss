@@ -1,0 +1,30 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 50px;
+  width: 120px;
+  min-width: 120px;
+  color: white;
+  overflow: hidden;
+  border-radius: 15%;
+  border: black 2px solid;
+
+  .arrow {
+    text-align: center;
+    background-color: white;
+    color: green;
+    font-size: 40px;
+    padding-top: 20px;
+    border-radius: 15%;
+    width: 30%;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lightgray;
+    }
+  }
+}

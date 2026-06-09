@@ -1,0 +1,46 @@
+@import '../../../styles/settings.scss';
+
+.nav {
+  background-color: black;
+  padding: 6px 5px 4px 5px;
+  display: flex;
+  align-items: center;
+
+  h5 {
+    font-size: 30px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.menuItem {
+  margin-left: 20px;
+  color: white;
+  // opacity: .6;
+  transition: .3s;
+
+  &:hover {
+    opacity: 1;
+    color: greenyellow;
+  }
+}
+
+.cart {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.login {
+  color: white;
+  margin-right: 30px;
+  margin-left: auto;
+  opacity: .8;
+  transition: .3s;
+
+  &:hover {
+    opacity: 1;
+    color: greenyellow;
+  }
+}

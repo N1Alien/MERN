@@ -1,0 +1,45 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  width: 80%;
+  font-size: 15px;
+
+  .special {
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    .specialBtn {
+      margin: 0 auto;
+
+      &:hover {
+        cursor: pointer;
+        color: green;
+      }
+    }
+  }
+
+  .cardRequest {
+    display: flex;
+    flex-direction: row;
+
+    .input {
+      width: 70%;
+    }
+
+    .btn {
+      border-radius: 10px;
+      padding: 6% 11%;
+      margin: auto;
+      color: black;
+      text-align: center;
+      transition: .3s;
+
+      &:hover {
+
+        cursor: pointer;
+        color: darkgreen;
+      }
+    }
+  }
+}

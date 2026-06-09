@@ -1,0 +1,21 @@
+@import '../../../styles/settings.scss';
+
+
+.root {
+  max-width: 500px;
+  max-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.box {
+  .item {
+    width: 100%;
+    max-width: 500px;
+    object-fit: contain;
+    display: block;
+    height: 300px;
+  }
+}

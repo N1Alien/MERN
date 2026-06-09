@@ -1,0 +1,61 @@
+@import '../../../styles/settings.scss';
+
+.nav {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.menuItem {
+  color: white;
+  opacity: .6;
+  margin-bottom: 20px;
+
+  &:hover {
+    opacity: 1;
+    color: greenyellow;
+  }
+}
+
+.hamburger {
+  margin-left: 85%;
+  color: white;
+  font-size: 30px;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.login {
+  color: white;
+  opacity: .8;
+
+  &:hover {
+    opacity: 1;
+    color: greenyellow;
+  }
+}
+
+.open {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  align-items: center;
+  position: relative;
+
+  .login {
+    margin: 0;
+  }
+}
