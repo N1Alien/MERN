@@ -38,7 +38,7 @@ const Component = ({ className, getCars }) => {
       <div className={flag ? styles.hide : styles.show}>
         {(
           <>
-            <Particles
+            <div id="particles-js" style={{ position: 'absolute', width: '100%', height: '100%' }} 
               canvasClassName={styles.part}
               params={{
                 'particles': {
