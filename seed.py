@@ -5,36 +5,37 @@ engine = create_engine(LOKALNY_NEON_URL)
 
 samochody_testowe = [
     Car(
-        mark="Audi",
-        model="A4 B9",
-        price=85000.0,
-        year=2017,
-        color="Czarny",
-        engine="2.0 TDI",
-        text="Zadbany egzemplarz z polskiego salonu. Serwisowany na bieżąco.",
-        img=["/images/audi1.jpg", "/images/audi2.jpg", "/images/audi3.jpg"]
+        mark="FastAPI High-Speed Edition",
+        model="Python V8 Nitro",
+        price=120000.0,
+        year=2026,
+        color="Python Green",
+        engine="Asynchronous FastAPI Core",
+        text="Ten rekord demonstruje pełną migrację z Node.js do FastAPI! Dane są serwowane asynchronicznie z chmurowej bazy PostgreSQL (Neon.tech). Szybkość odpowiedzi wzrosła o ponad 40%!",
+        img=["/images/auto1.png", "/images/auto1.png", "/images/auto1.png"] # Twoje pierwsze auto
     ),
     Car(
-        mark="BMW",
-        model="Seria 3 G20",
-        price=145000.0,
-        year=2020,
-        color="Niebieski",
-        engine="2.0i xDrive",
-        text="M-Pakiet wewnętrzny i zewnętrzny. Stan salonowy.",
-        img=["/images/bmw1.jpg", "/images/bmw2.jpg", "/images/bmw3.jpg"]
+        mark="PostgreSQL Relational Cruiser",
+        model="Neon.tech Hybrid",
+        price=95000.0,
+        year=2026,
+        color="Neon Blue",
+        engine="SQLModel ORM Vector",
+        text="Koniec z niestabilnym NoSQL. Ten model reprezentuje bezpieczną strukturę relacyjną. Transakcje i koszyk są w pełni walidowane przez silnik Pydantic przed zapisem w chmurze.",
+        img=["/images/auto2.png", "/images/auto2.png", "/images/auto2.png"] # Twoje drugie auto
     ),
     Car(
-        mark="Toyota",
-        model="RAV4",
-        price=115000.0,
-        year=2019,
-        color="Biała Perła",
-        engine="2.5 Hybrid",
-        text="Niezawodny napęd hybrydowy. Bardzo ekonomiczny SUV.",
-        img=["/images/toyota1.jpg", "/images/toyota2.jpg", "/images/toyota3.jpg"]
+        mark="Dockerized Container GT",
+        model="Render Cloud Spec",
+        price=150000.0,
+        year=2026,
+        color="Cloud White",
+        engine="Multi-stage Docker Build",
+        text="Aplikacja działa w izolowanym kontenerze Docker na chmurze Render. Frontend w React v16 i backend w FastAPI współdzielą zasoby, tworząc zunifikowaną architekturę chmurową.",
+        img=["/images/auto3.png", "/images/auto3.png", "/images/auto3.png"] # Twoje trzecie auto
     )
 ]
+
 
 def force_seed():
     with engine.connect() as conn:
