@@ -1,10 +1,8 @@
-from sqlmodel import Session, create_engine, select
-# Importujemy strukturę tabeli bezpośrednio z Twojego pliku main.py
-from main import Car, DATABASE_URL
+from sqlmodel import Session, create_engine, select, text
+from main import Car, LOKALNY_NEON_URL
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(LOKALNY_NEON_URL)
 
-# Przykładowe samochody do Twojego sklepu
 samochody_testowe = [
     Car(
         mark="Audi",
@@ -13,7 +11,8 @@ samochody_testowe = [
         year=2017,
         color="Czarny",
         engine="2.0 TDI",
-        text="Zadbany egzemplarz z polskiego salonu. Serwisowany na bieżąco, bogate wyposażenie."
+        text="Zadbany egzemplarz z polskiego salonu. Serwisowany na bieżąco.",
+        img=["/images/audi1.jpg", "/images/audi2.jpg", "/images/audi3.jpg"]
     ),
     Car(
         mark="BMW",
@@ -22,7 +21,8 @@ samochody_testowe = [
         year=2020,
         color="Niebieski",
         engine="2.0i xDrive",
-        text="M-Pakiet wewnętrzny i zewnętrzny. Pierwszy właściciel, niski przebieg, stan salonowy."
+        text="M-Pakiet wewnętrzny i zewnętrzny. Stan salonowy.",
+        img=["/images/bmw1.jpg", "/images/bmw2.jpg", "/images/bmw3.jpg"]
     ),
     Car(
         mark="Toyota",
@@ -31,33 +31,29 @@ samochody_testowe = [
         year=2019,
         color="Biała Perła",
         engine="2.5 Hybrid",
-        text="Niezawodny napęd hybrydowy. Bardzo ekonomiczny i przestronny SUV idealny dla rodziny."
-    ),
-    Car(
-        mark="Ford",
-        model="Mustang GT",
-        price=195000.0,
-        year=2018,
-        color="Czerwony",
-        engine="5.0 V8",
-        text="Legenda amerykańskiej motoryzacji. Brutalna moc, niesamowite brzmienie, manualna skrzynia."
+        text="Niezawodny napęd hybrydowy. Bardzo ekonomiczny SUV.",
+        img=["/images/toyota1.jpg", "/images/toyota2.jpg", "/images/toyota3.jpg"]
     )
 ]
 
-def seed_database():
+def force_seed():
+    with engine.connect() as conn:
+        print("🧹 Usuwanie starych, wadliwych tabel w chmurze Neon...")
+        conn.execute(text("DROP TABLE IF EXISTS orderproduct CASCADE;"))
+        conn.execute(text("DROP TABLE IF EXISTS \"order\" CASCADE;"))
+        conn.execute(text("DROP TABLE IF EXISTS car CASCADE;"))
+        conn.commit()
+    
+    # Tworzymy puste tabele na nowo z prawidłową strukturą ARRAY
+    from main import SQLModel
+    SQLModel.metadata.create_all(engine)
+    
     with Session(engine) as session:
-        # Sprawdzamy, czy w bazie nie ma już przypadkiem jakichś aut
-        istniejące_auta = session.exec(select(Car)).first()
-        if istniejące_auta:
-            print("⚠️ Baza danych zawiera już samochody. Przerywam, aby nie dublować danych.")
-            return
-
-        print("🚀 Dodaję samochody testowe do bazy Neon.tech...")
+        print("🚀 Wgrywanie świeżych samochodów wraz z tablicami obrazków...")
         for auto in samochody_testowe:
             session.add(auto)
-        
         session.commit()
-        print("✅ Sukces! Samochody zostały poprawnie zapisane w bazie.")
+    print("=== SUKCES! BAZA CHMUROWA ZOSTAŁA ODNOWIONA I NASYCONA DANYMI! ===")
 
 if __name__ == "__main__":
-    seed_database()
+    force_seed()
