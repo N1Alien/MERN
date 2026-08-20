@@ -1,10 +1,12 @@
+@import '../../../styles/settings.scss';
+
 .root {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  background: #000000; /* Klasyczne czarne tło pod sieć */
   overflow: hidden;
   z-index: 9999;
   cursor: pointer;
@@ -19,16 +21,13 @@
   position: relative;
 }
 
-// CAŁKOWITE USUNIĘCIE WARSTWY PO KLIKNIĘCIU
+/* Ta klasa teraz zadziała perfekcyjnie dzięki poprawnej kompilacji SASS */
 .hide {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
 }
-
 
 .header {
   font-family: 'Montserrat', sans-serif;
@@ -39,58 +38,6 @@
   text-transform: uppercase;
   text-align: center;
   z-index: 10;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-// === CZYSTA ANIMACJA PŁYWAJĄCYCH CZĄSTECZEK (STARS) ===
-.starsContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.stars {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: 200px 300px #fff, 400px 100px #fff, 800px 400px #fff, 1200px 200px #fff, 1400px 600px #fff, 600px 800px #fff;
-  animation: animStars 50s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.stars2 {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  box-shadow: 100px 500px #fff, 500px 300px #fff, 900px 700px #fff, 1100px 100px #fff, 1500px 400px #fff;
-  animation: animStars 100s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.stars3 {
-  width: 4px;
-  height: 4px;
-  background: transparent;
-  box-shadow: 150px 600px #fff, 600px 400px #fff, 1000px 800px #fff, 1200px 200px #fff, 1600px 500px #fff;
-  animation: animStars 150s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@keyframes animStars {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-1000px); }
+  user-select: none;
+  pointer-events: none;
 }
