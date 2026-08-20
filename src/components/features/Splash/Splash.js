@@ -7,163 +7,102 @@ import { connect } from 'react-redux';
 import { loadCars } from '../../../redux/carRedux';
 
 const Component = ({ className, getCars }) => {
-// Wewnątrz komponentu:
 
   useEffect(() => {
-    // Sprawdza czy obiekt particlesJS istnieje globalnie i ładuje konfigurację
     if (window.particlesJS) {
       window.particlesJS('particles-js', {
-        /* Tutaj wklej swoje stare parametry animacji cząsteczek */
+        /* Global configuration fallback */
       });
     }
   }, []);
+
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     getCars();
-  }, []);
+  }, [getCars]);
+
+  const scroolChange = () => {
+    window.scrollTo(0, 0);
+  };
 
   const hideSplash = () => {
     scroolChange();
     setFlag(true);
   };
 
-  const scroolChange = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
-    <div className={clsx(className, styles.root)} onClick={hideSplash} >
-
+    <div className={clsx(className, styles.root)} onClick={hideSplash} onKeyDown={hideSplash} role="button" tabIndex={0}>
       <div className={flag ? styles.hide : styles.show}>
-        {(
-          <>
-            <div id="particles-js" style={{ position: 'absolute', width: '100%', height: '100%' }} 
-              canvasClassName={styles.part}
-              params={{
-                'particles': {
-                  'number': {
-                  'value': 120,
-                  'density': {
-                    'enable': true,
-                    'value_area': 800,
-                  },
-                },
-                'color': {
-                  'value': '#ffffff',
-                },
-                'shape': {
-                  'type': 'circle',
-                  'stroke': {
-                    'width': 0,
-                    'color': '#000000',
-                  },
-                  'polygon': {
-                    'nb_sides': 5,
-                  },
-                },
-                'opacity': {
-                  'value': 0.5,
-                  'random': false,
-                  'anim': {
-                    'enable': false,
-                    'speed': 1,
-                    'opacity_min': 0.1,
-                    'sync': false,
-                  },
-                },
-                'size': {
-                  'value': 1,
-                  'random': true,
-                  'anim': {
-                    'enable': false,
-                    'speed': 40,
-                    'size_min': 0.1,
-                    'sync': false,
-                  },
-                },
-                'line_linked': {
+        <div 
+          id="particles-js" 
+          style={{ position: 'absolute', width: '100%', height: '100%' }} 
+          canvasClassName={styles.part}
+          params={{
+            'particles': {
+              'number': {
+                'value': 80,
+                'density': {
                   'enable': true,
-                  'distance': 150,
-                  'color': '#ffffff',
-                  'opacity': 0.4,
-                  'width': 1,
+                  'value_area': 800,
                 },
-                'move': {
+              },
+              'color': {
+                'value': '#ffffff',
+              },
+              'shape': {
+                'type': 'circle',
+              },
+              'opacity': {
+                'value': 0.5,
+                'random': false,
+              },
+              'size': {
+                'value': 3,
+                'random': true,
+              },
+              'line_linked': {
+                'enable': true,
+                'distance': 150,
+                'color': '#ffffff',
+                'opacity': 0.4,
+                'width': 1,
+              },
+              'move': {
+                'enable': true,
+                'speed': 2,
+                'direction': 'none',
+                'random': false,
+                'straight': false,
+                'out_mode': 'out',
+              },
+            },
+            'interactivity': {
+              'detect_on': 'canvas',
+              'events': {
+                'onhover': {
                   'enable': true,
-                  'speed': 6,
-                  'direction': 'none',
-                  'random': false,
-                  'straight': false,
-                  'out_mode': 'out',
-                  'attract': {
-                    'enable': false,
-                    'rotateX': 600,
-                    'rotateY': 1200,
-                  },
+                  'mode': 'grab',
                 },
-              },
-              'interactivity': {
-                'detect_on': 'canvas',
-                'events': {
-                  'onhover': {
-                    'enable': true,
-                    'mode': 'repulse',
-                  },
-                  'onclick': {
-                    'enable': true,
-                    'mode': 'push',
-                  },
-                  'resize': true,
+                'onclick': {
+                  'enable': true,
+                  'mode': 'push',
                 },
-                'modes': {
-                  'grab': {
-                    'distance': 100,
-                    'line_linked': {
-                      'opacity': 1,
-                    },
-                  },
-                  'bubble': {
-                    'distance': 400,
-                    'size': 40,
-                    'duration': 2,
-                    'opacity': 8,
-                    'speed': 3,
-                  },
-                  'repulse': {
-                    'distance': 100,
-                  },
-                  'push': {
-                    'particles_nb': 4,
-                  },
-                  'remove': {
-                    'particles_nb': 2,
-                  },
-                },
+                'resize': true,
               },
-              'retina_detect': true,
-              'config_demo': {
-                'hide_card': false,
-                'background_color': '#b61924',
-
-                'background_position': '50% 50%',
-                'background_repeat': 'no-repeat',
-                'background_size': 'cover',
-              },
-            }}
-            />
-            <div className={styles.header}>
-              3D-Printed Cars
-            </div>
-          </>
-        )}
+            },
+            'retina_detect': true,
+          }}
+        />
+        <div className={styles.header}>
+          3D-Printed Cars
+        </div>
       </div>
     </div >
   );
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   getCars: PropTypes.func,
 };
