@@ -19,9 +19,16 @@
   position: relative;
 }
 
+// CAŁKOWITE USUNIĘCIE WARSTWY PO KLIKNIĘCIU
 .hide {
-  display: none;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
+
 
 .header {
   font-family: 'Montserrat', sans-serif;
@@ -63,6 +70,19 @@
   background: transparent;
   box-shadow: 100px 500px #fff, 500px 300px #fff, 900px 700px #fff, 1100px 100px #fff, 1500px 400px #fff;
   animation: animStars 100s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.stars3 {
+  width: 4px;
+  height: 4px;
+  background: transparent;
+  box-shadow: 150px 600px #fff, 600px 400px #fff, 1000px 800px #fff, 1200px 200px #fff, 1600px 500px #fff;
+  animation: animStars 150s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
